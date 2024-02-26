@@ -1,0 +1,13 @@
+services:
+  backend:
+    image: nestjs/backend
+    ports:
+      - 4000:3000
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    expose:
+      - 4000
+    volumes:
+      - ./src:/usr/src/app/src
+    command: ['yarn', 'start:dev']
