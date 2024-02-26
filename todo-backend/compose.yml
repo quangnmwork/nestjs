@@ -11,3 +11,12 @@ services:
     volumes:
       - ./src:/usr/src/app/src
     command: ['yarn', 'start:dev']
+  db:
+    image: postgres:14.11
+    environment:
+      TZ: 'Asia/Tokyo'
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: todo
+    ports:
+      - 5432:5432
