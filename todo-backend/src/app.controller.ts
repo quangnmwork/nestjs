@@ -1,6 +1,6 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
-import { AccessTokenGuard } from './auth';
+import { AccessTokenGuard } from './auth/guard';
 
 @Controller()
 export class AppController {

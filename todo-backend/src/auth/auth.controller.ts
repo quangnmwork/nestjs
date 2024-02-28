@@ -1,7 +1,7 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
-import { GoogleAuthGuard } from './utils/google.guard';
+import { GoogleAuthGuard } from './guard/google.guard';
 import { AuthService } from './auth.service';
-import { RefreshTokenGuard } from './utils/refresh-token.guard';
+import { RefreshTokenGuard } from './guard/refresh-token.guard';
 
 @Controller('auth')
 export class AuthController {
