@@ -1,19 +1,13 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { AccessTokenGuard } from './auth/guard';
 
 @Controller()
 export class AppController {
+  authService: any;
   constructor(private readonly appService: AppService) {}
 
   @Get()
   getHello(): string {
     return this.appService.getHello();
-  }
-
-  @UseGuards(AccessTokenGuard)
-  @Get('/secret')
-  getGuardContent(): string {
-    return '保護されたコンテンツです。';
   }
 }
