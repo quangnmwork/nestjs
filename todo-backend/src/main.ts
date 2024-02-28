@@ -1,9 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as session from 'express-session';
+import { ZodExceptionFilter } from './utils';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalFilters(new ZodExceptionFilter());
   app.setGlobalPrefix('/api');
   app.use(
     session({
@@ -15,6 +18,7 @@ async function bootstrap() {
       },
     }),
   );
+
   await app.listen(3000);
 }
 bootstrap();

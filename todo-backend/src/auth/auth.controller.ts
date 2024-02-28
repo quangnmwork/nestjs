@@ -1,10 +1,25 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  UseGuards,
+  UsePipes,
+} from '@nestjs/common';
 import { GoogleAuthGuard } from './guard/google.guard';
 import { AuthService } from './auth.service';
 import { RefreshTokenGuard } from './guard/refresh-token.guard';
-import { UserAuthRole, UserEntity } from 'src/db';
+import { UserAuthRole } from 'src/db';
 import { AccessTokenGuard } from './guard';
 import { UserService } from 'src/user/user.service';
+import { ZodPipe } from 'src/utils';
+import {
+  loginDto,
+  loginSchema,
+  registerDto,
+  registerSchema,
+} from './auth.schema';
 
 @Controller('auth')
 export class AuthController {
@@ -27,9 +42,8 @@ export class AuthController {
   }
 
   @Post('login')
-  async handleLogin(
-    @Body() userLoginDto: Pick<UserEntity, 'email' | 'password'>,
-  ) {
+  @UsePipes(new ZodPipe(loginSchema))
+  async handleLogin(@Body() userLoginDto: loginDto) {
     return this.authService.login({
       email: userLoginDto.email,
       password: userLoginDto.password,
@@ -38,9 +52,8 @@ export class AuthController {
   }
 
   @Post('register')
-  async handleRegister(
-    @Body() createdUserDto: Pick<UserEntity, 'email' | 'password'>,
-  ) {
+  @UsePipes(new ZodPipe(registerSchema))
+  async handleRegister(@Body() createdUserDto: registerDto) {
     return this.authService.register({
       email: createdUserDto.email,
       password: createdUserDto.password,
