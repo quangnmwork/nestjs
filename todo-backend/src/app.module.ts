@@ -5,11 +5,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from './db';
 import { JwtModule } from '@nestjs/jwt';
-import { AccessTokenStrategy } from './auth/utils/access-token-strategy';
-import { RefreshTokenStrategy } from './auth/utils/refresh-token-strategy';
+import { AccessTokenStrategy } from './auth/strategy/access-token-strategy';
+import { RefreshTokenStrategy } from './auth/strategy/';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
-import { GoogleStrategy } from './auth/utils/google-strategy';
+import { GoogleStrategy } from './auth/strategy/google-strategy';
 
 @Module({
   imports: [

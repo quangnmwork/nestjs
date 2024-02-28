@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
-import { GoogleStrategy } from './utils/google-strategy';
+import { GoogleStrategy } from './strategy/google-strategy';
 import { AuthService } from './auth.service';
-import { RefreshTokenStrategy } from './utils/refresh-token-strategy';
-import { AccessTokenStrategy } from './utils/access-token-strategy';
+import { RefreshTokenStrategy } from './strategy';
+import { AccessTokenStrategy } from './strategy/access-token-strategy';
 
 @Module({
   controllers: [AuthController],
