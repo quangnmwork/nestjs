@@ -20,6 +20,14 @@ import {
   registerDto,
   registerSchema,
 } from './auth.schema';
+import {
+  GetProfileDoc,
+  GoogleLoginDoc,
+  GoogleRedirectDoc,
+  LoginDoc,
+  RefreshTokenDoc,
+  RegisterDoc,
+} from './auth.doc';
 
 @Controller('auth')
 export class AuthController {
@@ -30,10 +38,12 @@ export class AuthController {
 
   @Get('google/login')
   @UseGuards(GoogleAuthGuard)
+  @GoogleLoginDoc()
   handleGoogleLogin() {}
 
   @Get('google/redirect')
   @UseGuards(GoogleAuthGuard)
+  @GoogleRedirectDoc()
   handleGoogleRedirect(@Req() req) {
     return this.authService.login({
       ...req.user,
@@ -42,6 +52,7 @@ export class AuthController {
   }
 
   @Post('login')
+  @LoginDoc()
   @UsePipes(new ZodPipe(loginSchema))
   async handleLogin(@Body() userLoginDto: loginDto) {
     return this.authService.login({
@@ -52,6 +63,7 @@ export class AuthController {
   }
 
   @Post('register')
+  @RegisterDoc()
   @UsePipes(new ZodPipe(registerSchema))
   async handleRegister(@Body() createdUserDto: registerDto) {
     return this.authService.register({
@@ -61,6 +73,7 @@ export class AuthController {
   }
 
   @Get('profile')
+  @GetProfileDoc()
   @UseGuards(AccessTokenGuard)
   async getProfile(@Req() req) {
     if (req.user.password) delete req.user.password;
@@ -68,6 +81,7 @@ export class AuthController {
   }
 
   @Get('refresh')
+  @RefreshTokenDoc()
   @UseGuards(RefreshTokenGuard)
   async refreshTokens(@Req() req) {
     const userId = req?.user.sub;

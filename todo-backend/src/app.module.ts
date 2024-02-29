@@ -11,7 +11,6 @@ import { AuthService } from './auth/auth.service';
 import { GoogleStrategy } from './auth/strategy/google-strategy';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { JwtModule } from './jwt/jwt.module';
 
 @Module({
   imports: [
