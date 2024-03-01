@@ -25,7 +25,7 @@ const configDataSource: DataSourceOptions = {
   database: DATABASE_DB,
   migrations: ['src/db/migrations/**/*.ts'],
   synchronize: false,
-  entities: ['src/db/**/*.entity.ts'],
+  entities: ['src/entities/**/*.entity.ts'],
 };
 
 export const dataSource = new DataSource(configDataSource);
