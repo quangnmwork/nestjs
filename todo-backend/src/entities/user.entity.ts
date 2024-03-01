@@ -2,10 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ENTITIES } from './entity';
+import { RoomEntity } from './room.entity';
 
 export enum UserAuthRole {
   DEFAULT = 'default',
@@ -43,4 +45,7 @@ export class UserEntity {
     default: UserAuthRole.DEFAULT,
   })
   authenticationType: UserAuthRole;
+
+  @ManyToOne(() => RoomEntity, (room) => room.users)
+  room: RoomEntity;
 }
