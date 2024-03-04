@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils";
 import { Html, Head, Main, NextScript } from "next/document";
-import { Inter as FontSans } from "next/font/google"
-
 
 export default function Document() {
   return (
