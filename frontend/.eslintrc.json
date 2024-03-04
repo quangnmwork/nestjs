@@ -6,7 +6,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "plugin": [
     "no-relative-import-paths",
@@ -19,8 +20,14 @@
     "sourceType": "module"
   },
   "rules": {
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -36,11 +43,17 @@
     "@typescript-eslint/explicit-function-return-type": "error",
     "react/function-component-definition": [
       2,
-      { "namedComponents": "arrow-function" }
+      {
+        "namedComponents": "arrow-function"
+      }
     ],
     "no-relative-import-paths/no-relative-import-paths": [
       "error",
-      { "allowSameFolder": true, "rootDir": "src", "prefix": "@" }
+      {
+        "allowSameFolder": true,
+        "rootDir": "src",
+        "prefix": "@"
+      }
     ],
     "import/order": [
       "error",
