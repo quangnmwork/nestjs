@@ -25,5 +25,6 @@ const config: StorybookConfig = {
     };
     return webpackConfig;
   },
+  staticDirs: ['../public'],
 };
 export default config;
