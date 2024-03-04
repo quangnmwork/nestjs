@@ -43,6 +43,7 @@
     "eslint-plugin-no-relative-import-paths": "^1.5.3",
     "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8",
+    "scaffdog": "^3.0.0",
     "storybook": "^7.6.17",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
