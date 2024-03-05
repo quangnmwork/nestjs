@@ -8307,6 +8307,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-unused-imports@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "eslint-plugin-unused-imports@npm:3.1.0"
+  dependencies:
+    eslint-rule-composer: ^0.3.0
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": 6 - 7
+    eslint: 8
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+  checksum: c41da339ea8faf40b8b4081f0d52a4c75d24f121c5b95b19b777d12abfbc23505e4aab2422918b2517dd239a749a38912fb3405b42a9aa6b50c32cf5f3d6ecf0
+  languageName: node
+  linkType: hard
+
+"eslint-rule-composer@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "eslint-rule-composer@npm:0.3.0"
+  checksum: c2f57cded8d1c8f82483e0ce28861214347e24fd79fd4144667974cd334d718f4ba05080aaef2399e3bbe36f7d6632865110227e6b176ed6daa2d676df9281b1
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:5.1.1, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -8988,6 +9010,7 @@ __metadata:
     eslint-plugin-import: ^2.29.1
     eslint-plugin-no-relative-import-paths: ^1.5.3
     eslint-plugin-storybook: ^0.8.0
+    eslint-plugin-unused-imports: ^3.1.0
     lucide-react: ^0.344.0
     msw: latest
     msw-storybook-addon: 2.0.0-beta.1
