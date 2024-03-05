@@ -1,35 +1,35 @@
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod'
+
+import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '@/components/ui';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, CardContent, CardHeader, CardTitle, Input } from "@/components/ui";
-import { GoogleLogin } from "../GoogleLogin";
+} from '@/components/ui/form'
+import { GoogleLogin } from '@/feature/Auth/GoogleLogin';
 
-export type Props = React.PropsWithChildren<{}>;
+export type Props = React.PropsWithChildren;
 
 const formSchema = z.object({
   email: z.string().email('Email is invalid'),
-  password: z.string().min(1, "Password is invalid")
+  password: z.string().min(1, 'Password is invalid')
 })
 
-export const LoginForm: React.FC<Props> = ({ children }) => {
+export const LoginForm: React.FC<Props> = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof formSchema>): void {
 
     console.log(values)
   }

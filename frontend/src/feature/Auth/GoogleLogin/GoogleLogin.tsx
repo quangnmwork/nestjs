@@ -1,8 +1,9 @@
-import { Button, } from '@/components/ui';
 import { Boxes } from 'lucide-react'
-export type Props = React.PropsWithChildren<{}>;
 
-export const GoogleLogin: React.FC<Props> = ({ }) => {
+import { Button, } from '@/components/ui';
+export type Props = React.PropsWithChildren;
+
+export const GoogleLogin: React.FC<Props> = () => {
   return (
     <div>
       <small className='block text-center text-gray-400'>Or login with</small>

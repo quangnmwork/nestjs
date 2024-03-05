@@ -1,11 +1,12 @@
-import { cn } from "@/lib/utils";
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Document() {
+import { cn } from '@/lib/utils';
+
+export default function Document(): JSX.Element {
   return (
     <Html lang="en">
       <Head />
-      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
+      <body className={cn('min-h-screen bg-background font-sans antialiased')}>
         <Main />
         <NextScript />
       </body>
