@@ -3,8 +3,13 @@ import '../src/styles/globals.css';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import { handlers } from '../src/mocks/handlers';
 import { HttpResponse, http } from 'msw';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import React from 'react';
+import { Toaster } from '../src/components/ui'
 
 initialize({ onUnhandledRequest: 'warn' });
+
+const mockedClient = new QueryClient();
 
 const preview: Preview = {
   parameters: {
@@ -20,6 +25,7 @@ const preview: Preview = {
     },
   },
   loaders: [mswLoader],
+  decorators: [(Story) => (<QueryClientProvider client={mockedClient}><Story /><Toaster /></QueryClientProvider>)],
 };
 
 export default preview;
