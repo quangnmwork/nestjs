@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod'
+import { Schema, z } from 'zod'
 
 import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '@/components/ui';
 import {
@@ -12,10 +12,11 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { GoogleLogin } from '@/feature/Auth/GoogleLogin';
+import { RegisterBody } from '@/model';
 
 export type Props = React.PropsWithChildren;
 
-const formSchema = z.object({
+const formSchema: Schema<RegisterBody> = z.object({
   email: z.string().email('Email is invalid'),
   password: z.string().min(1, 'Password is invalid'),
   confirmPassword: z.string(),
