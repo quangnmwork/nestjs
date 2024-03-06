@@ -1,8 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import { AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
 import { Schema, z } from 'zod'
 
-import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '@/components/ui';
+import { Button, Card, CardContent, CardHeader, CardTitle, Input, toast } from '@/components/ui';
 import {
   Form,
   FormControl,
@@ -11,8 +13,12 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { API_ROUTE } from '@/constants';
 import { GoogleLogin } from '@/feature/Auth/GoogleLogin';
-import { RegisterBody } from '@/model';
+import { useToken } from '@/hooks';
+import { axiosClient } from '@/lib/axios';
+import { RegisterBody, TokenResponse } from '@/model';
+
 
 export type Props = React.PropsWithChildren;
 
@@ -31,9 +37,21 @@ export const RegisterForm: React.FC<Props> = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>): void {
+  const { mutateAsync } = useMutation({
+    mutationFn: (data: RegisterBody): Promise<AxiosResponse<TokenResponse>> => axiosClient.post(API_ROUTE.REGISTER, data)
+  })
+  const { actions: { setAccessToken, setRefreshToken } } = useToken();
 
-    console.log(values)
+  async function onSubmit(values: RegisterBody): Promise<void> {
+    try {
+      const { data } = await mutateAsync(values);
+      setAccessToken(data.accessToken);
+      setRefreshToken(data.refreshToken)
+    } catch (error) {
+      toast({
+        title: JSON.stringify(error)
+      })
+    }
   }
 
   return (
@@ -51,7 +69,7 @@ export const RegisterForm: React.FC<Props> = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Email" {...field} />
+                    <Input placeholder="Email" autoComplete='false' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -77,7 +95,7 @@ export const RegisterForm: React.FC<Props> = () => {
                 <FormItem>
                   <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Input type="password" {...field} />
+                    <Input type="password" autoComplete='false' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
