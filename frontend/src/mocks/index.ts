@@ -1,4 +1,6 @@
-async function initMocks(): Promise<void> {
+export async function initMocks(): Promise<void> {
+  console.log('Typeof', typeof window);
+
   if (typeof window === 'undefined') {
     console.log('Mock server listening');
     const { server } = await import('./server');

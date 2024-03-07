@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "NEXT_PUBLIC_API_URL=http://localhost:6006 storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "playwright:ui": "npx playwright test --ui"
+    "playwright:ui": "npx playwright test --ui",
+    "playwright": "npx playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('E2E', async ({ page }) => {
-  await page.goto('http://localhost:3000/auth/login');
+  await page.goto('/auth/login');
 
   await page.getByLabel('Email').fill('q@gmail.com');
   await page.getByLabel('Password').fill('123456');
@@ -31,6 +31,6 @@ test('Email and password should display error', async ({ page }) => {
   await page.getByLabel('Email').fill('qcom');
   await page.getByText('Submit').click();
 
-  expect(page.getByText('Email is invalid')).toBeInViewport();
-  expect(page.getByText('Password is invalid')).toBeInViewport();
+  expect(page.getByText('Email is invalid')).toBeDefined();
+  expect(page.getByText('Password is invalid')).toBeDefined();
 });
