@@ -45,7 +45,10 @@ export const LoginForm: React.FC<Props> = () => {
     try {
       const { data } = await mutateAsync(values);
       setAccessToken(data.accessToken);
-      setRefreshToken(data.refreshToken)
+      setRefreshToken(data.refreshToken);
+      toast({
+        title: 'Login success'
+      })
     } catch (error) {
       toast({
         title: JSON.stringify(error)
