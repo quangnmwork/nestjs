@@ -9,8 +9,8 @@
     "lint": "next lint",
     "storybook": "NEXT_PUBLIC_API_URL=http://localhost:6006 storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "playwright:ui": "npx playwright test --ui",
-    "playwright": "npx playwright test"
+    "playwright:ui": "NEXT_PUBLIC_API_MOCKING=disabled && npx playwright test --ui",
+    "playwright": "NEXT_PUBLIC_API_MOCKING=disabled && npx playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -57,6 +57,7 @@
     "eslint-plugin-unused-imports": "^3.1.0",
     "msw": "latest",
     "msw-storybook-addon": "2.0.0-beta.1",
+    "playwright-msw": "^3.0.1",
     "postcss": "^8",
     "scaffdog": "^3.0.0",
     "storybook": "^7.6.17",

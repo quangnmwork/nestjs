@@ -9129,6 +9129,7 @@ __metadata:
     msw: latest
     msw-storybook-addon: 2.0.0-beta.1
     next: 14.1.1
+    playwright-msw: ^3.0.1
     postcss: ^8
     react: ^18
     react-dom: ^18
@@ -12941,6 +12942,19 @@ __metadata:
   bin:
     playwright-core: cli.js
   checksum: e7081ff0f43b4b9053255109eb1d82164b7c6b55c7d022e25fca935d0f4fc547cb2e02a7b64f0c2a9462729be7bb45edb082f8b038306415944f1061d00d9c90
+  languageName: node
+  linkType: hard
+
+"playwright-msw@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "playwright-msw@npm:3.0.1"
+  dependencies:
+    "@mswjs/cookies": ^1.1.0
+    strict-event-emitter: ^0.5.1
+  peerDependencies:
+    "@playwright/test": ">=1.20.0"
+    msw: ^2.0.0
+  checksum: c1017bfac271be1c3d95989e848f04902439517c96a5cb066e9998b8c7c6493edf51a13878274932e8bd4a86e48ee80fd25fddf2208059b8dcdd9ef58669faea
   languageName: node
   linkType: hard
 
