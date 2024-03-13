@@ -71,7 +71,7 @@ export const LoginForm: React.FC<Props> = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Email" autoComplete='false' {...field} />
+                    <Input placeholder="Email" autoComplete='false' type='number' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

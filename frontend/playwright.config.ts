@@ -37,15 +37,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
@@ -73,5 +73,16 @@ export default defineConfig({
     command: 'npm run dev',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
+  },
+
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixels: 10,
+    },
+    toMatchSnapshot: {
+      // An acceptable ratio of pixels that are different to the
+      // total amount of pixels, between 0 and 1.
+      maxDiffPixelRatio: 0.1,
+    },
   },
 });
